@@ -47,7 +47,7 @@
 		957C7D178BC1F2F44B46B98F /* DTCRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCRow.swift; sourceTree = "<group>"; };
 		964E4988A693FCD796F2CD9A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		A48313181B4AC846803E399E /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
-		AD81A2F1AAC23D25FD77AC12 /* SwiftOBD2Dash.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SwiftOBD2Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD81A2F1AAC23D25FD77AC12 /* SwiftOBD2Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftOBD2Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6038E40168D05DA337B6EE /* FuelComputer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelComputer.swift; sourceTree = "<group>"; };
 		CD02936BB667DC2B778999BC /* RPMArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPMArc.swift; sourceTree = "<group>"; };
 		CE2D68724259AEF5BD626224 /* SwiftOBD2DashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOBD2DashApp.swift; sourceTree = "<group>"; };
@@ -235,7 +235,6 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					022F53A56BE00BD83BCFC4F7 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -310,6 +309,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = T43JWYWX8Y;
 				INFOPLIST_FILE = SwiftOBD2Dash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -328,6 +328,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = T43JWYWX8Y;
 				INFOPLIST_FILE = SwiftOBD2Dash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
