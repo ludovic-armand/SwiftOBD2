@@ -16,6 +16,7 @@ struct SettingsView: View {
                 Form {
                     connectionSection
                     vehicleSection
+                    fuelSection
                     aboutSection
                 }
                 .scrollContentBackground(.hidden)
@@ -91,6 +92,40 @@ struct SettingsView: View {
                         .listRowBackground(Theme.card)
                 }
             }
+        }
+    }
+
+    /// Fuel computer config — tank size + fuel type. These feed into Range and L/h math.
+    private var fuelSection: some View {
+        Section {
+            Picker("Fuel type", selection: Binding(
+                get: { obd.fuel.fuelType },
+                set: { obd.fuel.fuelType = $0 }
+            )) {
+                ForEach(FuelType.allCases) { type in
+                    Text(type.displayName).tag(type)
+                }
+            }
+            .listRowBackground(Theme.card)
+
+            HStack {
+                Text("Tank size")
+                Spacer()
+                TextField("Litres", value: Binding(
+                    get: { obd.fuel.tankSizeLitres },
+                    set: { obd.fuel.tankSizeLitres = max(1, $0) }
+                ), format: .number.precision(.fractionLength(0...1)))
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 90)
+                Text("L").foregroundStyle(Theme.textSecondary)
+            }
+            .listRowBackground(Theme.card)
+        } header: {
+            Text("Fuel")
+        } footer: {
+            Text("Range needs MAF + fuel level from your car. If your car doesn't expose either, range will show \"—\". Check your owner's manual for tank size.")
+                .foregroundStyle(Theme.textMuted)
         }
     }
 

@@ -38,6 +38,9 @@ struct DashboardView: View {
                     .frame(height: 280)
                     .cardStyle()
 
+                // Fuel strip — instant / avg / range.
+                fuelStrip
+
                 // Tile grid.
                 tileGrid
             }
@@ -56,6 +59,7 @@ struct DashboardView: View {
 
             VStack(spacing: 16) {
                 speedHero
+                fuelStrip
                 tileGrid
             }
         }
@@ -78,6 +82,44 @@ struct DashboardView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .cardStyle()
+    }
+
+    /// Three-up strip of fuel-related figures. Lays out in a row on wide screens,
+    /// wraps to a 2-col grid on tight ones.
+    private var fuelStrip: some View {
+        HStack(spacing: 12) {
+            FuelTile(
+                label: "Instant",
+                primary: instantPrimary,
+                secondary: instantSecondary
+            )
+            FuelTile(
+                label: "Avg",
+                primary: obd.fuel.tripAvgLPer100km.map { "\($0.formatted(.number.precision(.fractionLength(1))))" } ?? "—",
+                secondary: "L/100km"
+            )
+            FuelTile(
+                label: "Range",
+                primary: obd.fuel.rangeKm.map { "\(Int($0))" } ?? "—",
+                secondary: "km"
+            )
+        }
+    }
+
+    /// Show L/100km when actually moving; fall back to L/h at idle / red-light stops.
+    private var instantPrimary: String {
+        if let lp100 = obd.fuel.instantLPer100km {
+            return lp100.formatted(.number.precision(.fractionLength(1)))
+        }
+        if let lph = obd.fuel.instantLPerHour {
+            return lph.formatted(.number.precision(.fractionLength(1)))
+        }
+        return "—"
+    }
+    private var instantSecondary: String {
+        if obd.fuel.instantLPer100km != nil { return "L/100km" }
+        if obd.fuel.instantLPerHour   != nil { return "L/h (idle)" }
+        return obd.fuel.hasFuelData ? "—" : "no MAF"
     }
 
     private var tileGrid: some View {
@@ -109,12 +151,6 @@ struct DashboardView: View {
                 unit: "%",
                 max: 100,
                 warnAbove: 85
-            )
-            GaugeTile(
-                label: "Fuel",
-                value: obd.fuelLevel,
-                unit: "%",
-                max: 100
             )
             GaugeTile(
                 label: "Battery",

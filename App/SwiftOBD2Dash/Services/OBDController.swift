@@ -62,7 +62,11 @@ final class OBDController {
     /// Currently active polling mode. Views toggle this via `setPollingMode`.
     var pollingMode: PollingMode = .dashboard
 
+    /// Fuel-consumption calculator. Updated on every successful poll.
+    let fuel = FuelComputer()
+
     /// PIDs the dashboard polls continuously.
+    /// MAF + commandedEquivRatio are added so the FuelComputer has what it needs.
     static let dashboardPIDs: [OBDCommand] = [
         .mode1(.rpm),
         .mode1(.speed),
@@ -71,7 +75,9 @@ final class OBDController {
         .mode1(.throttlePos),
         .mode1(.engineLoad),
         .mode1(.fuelLevel),
-        .mode1(.controlModuleVoltage)
+        .mode1(.controlModuleVoltage),
+        .mode1(.maf),
+        .mode1(.commandedEquivRatio)
     ]
 
     /// Wider PID set polled when the Sensors view is on screen.
@@ -180,6 +186,8 @@ final class OBDController {
                 for (pid, value) in batch {
                     self.readings[pid] = value
                 }
+                // Recompute fuel metrics with the freshly-merged readings.
+                self.fuel.update(readings: self.readings)
             }
     }
 

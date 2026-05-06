@@ -70,6 +70,9 @@ final class TripRecorder {
             let trip = Trip(startedAt: .now)
             modelContext.insert(trip)
             currentTrip = trip
+            // Reset the fuel computer's trip totals so this new trip's averages
+            // start from zero rather than carrying over from the previous drive.
+            obd.fuel.resetTrip()
         }
 
         guard let trip = currentTrip else { return }
@@ -97,6 +100,11 @@ final class TripRecorder {
         let prevAvg = trip.avgSpeedKPH
         let n = Double(trip.sampleCount)
         trip.avgSpeedKPH = prevAvg + (speed - prevAvg) / n
+
+        // Mirror the fuel computer's running totals onto the trip so they
+        // survive even after the FuelComputer resets for the next drive.
+        trip.fuelUsedL  = obd.fuel.fuelUsedThisTripL
+        trip.distanceKm = obd.fuel.distanceThisTripKm
 
         try? modelContext.save()
     }

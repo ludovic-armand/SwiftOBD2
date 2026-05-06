@@ -22,6 +22,11 @@ final class Trip {
     var maxCoolantC: Double = 0
     var sampleCount: Int = 0
 
+    /// Total fuel burned during this trip in litres. 0 if the car doesn't expose MAF.
+    var fuelUsedL: Double = 0
+    /// Distance covered during this trip in km, integrated from OBD speed.
+    var distanceKm: Double = 0
+
     /// Optional trip note the user can add later.
     var note: String?
 

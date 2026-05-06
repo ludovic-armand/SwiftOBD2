@@ -35,14 +35,29 @@ struct TripDetailView: View {
         f.allowedUnits = [.hour, .minute, .second]
         f.unitsStyle = .abbreviated
 
+        // Fuel economy for this trip (only meaningful past 100m and if MAF was available).
+        let economy: String? = {
+            guard trip.distanceKm > 0.1, trip.fuelUsedL > 0 else { return nil }
+            let lp100 = (trip.fuelUsedL * 100.0) / trip.distanceKm
+            return lp100.formatted(.number.precision(.fractionLength(1))) + " L/100km"
+        }()
+
         return VStack(spacing: 12) {
             HStack(spacing: 12) {
                 stat(title: "Duration", value: f.string(from: trip.duration) ?? "—")
-                stat(title: "Top speed", value: "\(Int(trip.maxSpeedKPH)) km/h")
+                stat(title: "Distance", value: trip.distanceKm > 0
+                     ? "\(trip.distanceKm.formatted(.number.precision(.fractionLength(1)))) km"
+                     : "—")
             }
             HStack(spacing: 12) {
+                stat(title: "Top speed", value: "\(Int(trip.maxSpeedKPH)) km/h")
                 stat(title: "Avg speed", value: "\(Int(trip.avgSpeedKPH)) km/h")
-                stat(title: "Max RPM",   value: "\(Int(trip.maxRPM))")
+            }
+            HStack(spacing: 12) {
+                stat(title: "Fuel used", value: trip.fuelUsedL > 0
+                     ? "\(trip.fuelUsedL.formatted(.number.precision(.fractionLength(2)))) L"
+                     : "—")
+                stat(title: "Economy",   value: economy ?? "—")
             }
         }
     }

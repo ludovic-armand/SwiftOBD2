@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0592CA8B0EE2DCF1D8544FC3 /* SensorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5CABCAE72D3CB535CFD5C /* SensorsView.swift */; };
+		05957E1F6127F1BCE91DBF71 /* SwiftOBD2DashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D68724259AEF5BD626224 /* SwiftOBD2DashApp.swift */; };
+		1321FD5F039012BFBE5AF968 /* SensorKnowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F1BEED0A2C73A593F96279 /* SensorKnowledge.swift */; };
+		22E1884CD6461DA1F863FE88 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1612E90C2A7608E8EFF2ED /* TripDetailView.swift */; };
+		40B2FB49C6F9960B6FC61A59 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8E3E5A2AF9E9EBEFF033A5 /* TripsView.swift */; };
+		6E6A2584537216FB769529F9 /* GaugeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF43BFECBA6165176225D327 /* GaugeTile.swift */; };
+		734EC6EA70A9D715CF442D4E /* SwiftOBD2 in Frameworks */ = {isa = PBXBuildFile; productRef = 07EF1875194BF7B3334FD1D7 /* SwiftOBD2 */; };
+		7DB276AC1B9434B82D0426D6 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964E4988A693FCD796F2CD9A /* Trip.swift */; };
+		8148D2EE04A54D7486DAC684 /* OBDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2438078F1A840C1932FBC0A1 /* OBDController.swift */; };
+		894D59FC66F36F3D8C2072FD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70B7DAA3DC1755F7EBC16D2 /* SettingsView.swift */; };
+		9490F88DD81CDAE4FD92AD53 /* RPMArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD02936BB667DC2B778999BC /* RPMArc.swift */; };
+		A7DA983E89BB4C02A3E5D510 /* TripRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09226B3C29F8BA8F7DE615 /* TripRecorder.swift */; };
+		B281E34215FC7E380654048A /* SensorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454947162CE5C6BE5BB1934C /* SensorDetailView.swift */; };
+		B73BE603FB340475BFFECB87 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302301E84D3CCB4EE08C8391 /* Theme.swift */; };
+		B8EFD942E691D40A6461A040 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193666D43C0FCBB500D292DB /* RootTabView.swift */; };
+		B9E0DA67C7D828F8A0F7A98A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372E8989DAFB8C3987B268ED /* Assets.xcassets */; };
+		BFED18466CD37FFC8089FA1E /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48313181B4AC846803E399E /* DiagnosticsView.swift */; };
+		D06F50B967A79E02144C3DF6 /* DTCKnowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D65F6ABB5D631C2DAE8BC /* DTCKnowledge.swift */; };
+		DE3DC06401054F0A980D4A53 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B523E9916459B3009E1D5 /* DashboardView.swift */; };
+		DFEDC4BAD5429B041F9735D1 /* FuelComputer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6038E40168D05DA337B6EE /* FuelComputer.swift */; };
+		E9D3C6DF208F06A5CF3A9FA8 /* FuelTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAADED2F25B7C4CED7BE9F2 /* FuelTile.swift */; };
+		F24A04FF849509B4C5671A01 /* DTCRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957C7D178BC1F2F44B46B98F /* DTCRow.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		193666D43C0FCBB500D292DB /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		2438078F1A840C1932FBC0A1 /* OBDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBDController.swift; sourceTree = "<group>"; };
+		302301E84D3CCB4EE08C8391 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		372E8989DAFB8C3987B268ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		454947162CE5C6BE5BB1934C /* SensorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDetailView.swift; sourceTree = "<group>"; };
+		45F1BEED0A2C73A593F96279 /* SensorKnowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorKnowledge.swift; sourceTree = "<group>"; };
+		4A1612E90C2A7608E8EFF2ED /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
+		5AE5596C48EE50C92D251E59 /* SwiftOBD2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftOBD2; path = ..; sourceTree = SOURCE_ROOT; };
+		5DAADED2F25B7C4CED7BE9F2 /* FuelTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTile.swift; sourceTree = "<group>"; };
+		6AF5CABCAE72D3CB535CFD5C /* SensorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsView.swift; sourceTree = "<group>"; };
+		6E2B523E9916459B3009E1D5 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		7F1D65F6ABB5D631C2DAE8BC /* DTCKnowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCKnowledge.swift; sourceTree = "<group>"; };
+		957C7D178BC1F2F44B46B98F /* DTCRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCRow.swift; sourceTree = "<group>"; };
+		964E4988A693FCD796F2CD9A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		A48313181B4AC846803E399E /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
+		AD81A2F1AAC23D25FD77AC12 /* SwiftOBD2Dash.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SwiftOBD2Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB6038E40168D05DA337B6EE /* FuelComputer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelComputer.swift; sourceTree = "<group>"; };
+		CD02936BB667DC2B778999BC /* RPMArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPMArc.swift; sourceTree = "<group>"; };
+		CE2D68724259AEF5BD626224 /* SwiftOBD2DashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOBD2DashApp.swift; sourceTree = "<group>"; };
+		CF09226B3C29F8BA8F7DE615 /* TripRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRecorder.swift; sourceTree = "<group>"; };
+		D70B7DAA3DC1755F7EBC16D2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EF43BFECBA6165176225D327 /* GaugeTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeTile.swift; sourceTree = "<group>"; };
+		FA8E3E5A2AF9E9EBEFF033A5 /* TripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		280FDFBC31E78DE0739A8843 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				734EC6EA70A9D715CF442D4E /* SwiftOBD2 in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		39360E41C137AE7DD9064EEC /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				5AE5596C48EE50C92D251E59 /* SwiftOBD2 */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		4CB21EB971DD7E8F8EDEB374 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				6E2B523E9916459B3009E1D5 /* DashboardView.swift */,
+				5DAADED2F25B7C4CED7BE9F2 /* FuelTile.swift */,
+				EF43BFECBA6165176225D327 /* GaugeTile.swift */,
+				CD02936BB667DC2B778999BC /* RPMArc.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		505F28A87B7EC9E5A47584D1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7F1D65F6ABB5D631C2DAE8BC /* DTCKnowledge.swift */,
+				BB6038E40168D05DA337B6EE /* FuelComputer.swift */,
+				2438078F1A840C1932FBC0A1 /* OBDController.swift */,
+				45F1BEED0A2C73A593F96279 /* SensorKnowledge.swift */,
+				CF09226B3C29F8BA8F7DE615 /* TripRecorder.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		51DA35064DC342AE2A795CA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD81A2F1AAC23D25FD77AC12 /* SwiftOBD2Dash.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8576D7BE85CF025A229A70F4 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				302301E84D3CCB4EE08C8391 /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		8A2E37C53F5A5342872F976A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D70B7DAA3DC1755F7EBC16D2 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9166E202A489D5423116E9FA = {
+			isa = PBXGroup;
+			children = (
+				39360E41C137AE7DD9064EEC /* Packages */,
+				A269B6420A8A3CAC3576ACED /* SwiftOBD2Dash */,
+				51DA35064DC342AE2A795CA7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9FC13E7A7D9C4F01C7066509 /* Diagnostics */ = {
+			isa = PBXGroup;
+			children = (
+				A48313181B4AC846803E399E /* DiagnosticsView.swift */,
+				957C7D178BC1F2F44B46B98F /* DTCRow.swift */,
+			);
+			path = Diagnostics;
+			sourceTree = "<group>";
+		};
+		A12725316C7AC8E762CD8760 /* Trips */ = {
+			isa = PBXGroup;
+			children = (
+				4A1612E90C2A7608E8EFF2ED /* TripDetailView.swift */,
+				FA8E3E5A2AF9E9EBEFF033A5 /* TripsView.swift */,
+			);
+			path = Trips;
+			sourceTree = "<group>";
+		};
+		A269B6420A8A3CAC3576ACED /* SwiftOBD2Dash */ = {
+			isa = PBXGroup;
+			children = (
+				FE220366DAE69374E2D72DA5 /* Models */,
+				D4DBD8F0D3021E7A531514EB /* Resources */,
+				505F28A87B7EC9E5A47584D1 /* Services */,
+				8576D7BE85CF025A229A70F4 /* Theme */,
+				C476D046D4B3815FC7D55811 /* Views */,
+				CE2D68724259AEF5BD626224 /* SwiftOBD2DashApp.swift */,
+			);
+			path = SwiftOBD2Dash;
+			sourceTree = "<group>";
+		};
+		BE96D20987AB1E913C0148C4 /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				454947162CE5C6BE5BB1934C /* SensorDetailView.swift */,
+				6AF5CABCAE72D3CB535CFD5C /* SensorsView.swift */,
+			);
+			path = Sensors;
+			sourceTree = "<group>";
+		};
+		C476D046D4B3815FC7D55811 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CB21EB971DD7E8F8EDEB374 /* Dashboard */,
+				9FC13E7A7D9C4F01C7066509 /* Diagnostics */,
+				BE96D20987AB1E913C0148C4 /* Sensors */,
+				8A2E37C53F5A5342872F976A /* Settings */,
+				A12725316C7AC8E762CD8760 /* Trips */,
+				193666D43C0FCBB500D292DB /* RootTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D4DBD8F0D3021E7A531514EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				372E8989DAFB8C3987B268ED /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FE220366DAE69374E2D72DA5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				964E4988A693FCD796F2CD9A /* Trip.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		022F53A56BE00BD83BCFC4F7 /* SwiftOBD2Dash */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5000D314361B7570AEB43019 /* Build configuration list for PBXNativeTarget "SwiftOBD2Dash" */;
+			buildPhases = (
+				695FE8429C96EBCEF2E6EA8F /* Sources */,
+				B49D7864E7C59ADA4BF88BC4 /* Resources */,
+				280FDFBC31E78DE0739A8843 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftOBD2Dash;
+			packageProductDependencies = (
+				07EF1875194BF7B3334FD1D7 /* SwiftOBD2 */,
+			);
+			productName = SwiftOBD2Dash;
+			productReference = AD81A2F1AAC23D25FD77AC12 /* SwiftOBD2Dash.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		522EE04AA38E12FED82E632B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					022F53A56BE00BD83BCFC4F7 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = B61150070E43FF9E88F2195C /* Build configuration list for PBXProject "SwiftOBD2Dash" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 9166E202A489D5423116E9FA;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DA4F4DF40E1B5A9E3935C6DA /* XCLocalSwiftPackageReference ".." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 51DA35064DC342AE2A795CA7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				022F53A56BE00BD83BCFC4F7 /* SwiftOBD2Dash */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B49D7864E7C59ADA4BF88BC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9E0DA67C7D828F8A0F7A98A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		695FE8429C96EBCEF2E6EA8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D06F50B967A79E02144C3DF6 /* DTCKnowledge.swift in Sources */,
+				F24A04FF849509B4C5671A01 /* DTCRow.swift in Sources */,
+				DE3DC06401054F0A980D4A53 /* DashboardView.swift in Sources */,
+				BFED18466CD37FFC8089FA1E /* DiagnosticsView.swift in Sources */,
+				DFEDC4BAD5429B041F9735D1 /* FuelComputer.swift in Sources */,
+				E9D3C6DF208F06A5CF3A9FA8 /* FuelTile.swift in Sources */,
+				6E6A2584537216FB769529F9 /* GaugeTile.swift in Sources */,
+				8148D2EE04A54D7486DAC684 /* OBDController.swift in Sources */,
+				9490F88DD81CDAE4FD92AD53 /* RPMArc.swift in Sources */,
+				B8EFD942E691D40A6461A040 /* RootTabView.swift in Sources */,
+				B281E34215FC7E380654048A /* SensorDetailView.swift in Sources */,
+				1321FD5F039012BFBE5AF968 /* SensorKnowledge.swift in Sources */,
+				0592CA8B0EE2DCF1D8544FC3 /* SensorsView.swift in Sources */,
+				894D59FC66F36F3D8C2072FD /* SettingsView.swift in Sources */,
+				05957E1F6127F1BCE91DBF71 /* SwiftOBD2DashApp.swift in Sources */,
+				B73BE603FB340475BFFECB87 /* Theme.swift in Sources */,
+				7DB276AC1B9434B82D0426D6 /* Trip.swift in Sources */,
+				22E1884CD6461DA1F863FE88 /* TripDetailView.swift in Sources */,
+				A7DA983E89BB4C02A3E5D510 /* TripRecorder.swift in Sources */,
+				40B2FB49C6F9960B6FC61A59 /* TripsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1CC3BE7D6D6BC52D00CF6E3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = SwiftOBD2Dash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ludovic.swiftobd2dash;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1EF5397A0E95C26EA1A99A97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = SwiftOBD2Dash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ludovic.swiftobd2dash;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2BCAE2E90227D6303CED5EC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8F5A33755A6B6CCAC4AD936F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5000D314361B7570AEB43019 /* Build configuration list for PBXNativeTarget "SwiftOBD2Dash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EF5397A0E95C26EA1A99A97 /* Debug */,
+				1CC3BE7D6D6BC52D00CF6E3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B61150070E43FF9E88F2195C /* Build configuration list for PBXProject "SwiftOBD2Dash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BCAE2E90227D6303CED5EC8 /* Debug */,
+				8F5A33755A6B6CCAC4AD936F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		DA4F4DF40E1B5A9E3935C6DA /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		07EF1875194BF7B3334FD1D7 /* SwiftOBD2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftOBD2;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 522EE04AA38E12FED82E632B /* Project object */;
+}
