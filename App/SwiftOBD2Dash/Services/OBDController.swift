@@ -9,6 +9,7 @@
 
 import Foundation
 import Combine
+import CoreBluetooth
 import SwiftUI
 import SwiftOBD2
 
@@ -32,6 +33,15 @@ final class OBDController {
     /// All PID readings the dashboard cares about, keyed by PID.
     var readings: [OBDCommand: MeasurementResult] = [:]
 
+    /// Timestamp of the last successful poll batch. Lets the UI show freshness
+    /// ("Live" / "Last reading 4 s ago") so a stalled connection is visible.
+    var lastReadingAt: Date?
+
+    /// Name of the BLE peripheral we're currently talking to, if any.
+    /// Pulled from `CBPeripheral.name`. Used to show users *which* adapter
+    /// they're connected to.
+    var connectedDeviceName: String?
+
     /// Diagnostics state.
     var dtcs: [ECUID: [TroubleCode]] = [:]
     var lastDTCScan: Date?
@@ -43,6 +53,21 @@ final class OBDController {
         set { service.connectionType = newValue }
     }
 
+    /// User-selected OBD protocol. nil = let the adapter auto-detect.
+    /// Forcing a protocol (typically CAN 11/500 on modern cars) is the standard
+    /// fix when auto-detect flakes out on cheap ELM327 clones.
+    var preferredProtocol: PROTOCOL? {
+        didSet {
+            if let raw = preferredProtocol?.rawValue {
+                UserDefaults.standard.set(raw, forKey: Self.preferredProtocolKey)
+            } else {
+                UserDefaults.standard.removeObject(forKey: Self.preferredProtocolKey)
+            }
+        }
+    }
+
+    private static let preferredProtocolKey = "obd.preferredProtocol"
+
     // MARK: - Underlying service
 
     /// We keep the SwiftOBD2 service private; everything goes through this controller.
@@ -51,6 +76,7 @@ final class OBDController {
     /// Combine bag for the polling pipeline.
     private var pollCancellable: AnyCancellable?
     private var stateCancellable: AnyCancellable?
+    private var peripheralCancellable: AnyCancellable?
 
     /// Polling modes. The dashboard wants a tight loop on a small set of PIDs;
     /// the Sensors view wants a wider sweep but doesn't need 0.4 s refresh.
@@ -85,6 +111,12 @@ final class OBDController {
     static let widePIDs: [OBDCommand] = SensorKnowledgeBase.allPIDs
 
     init() {
+        // Hydrate the persisted preferred protocol, if any.
+        if let raw = UserDefaults.standard.string(forKey: Self.preferredProtocolKey),
+           let proto = PROTOCOL(rawValue: raw) {
+            self.preferredProtocol = proto
+        }
+
         // Mirror the service's @Published connectionState onto our @Observable property.
         stateCancellable = service.$connectionState
             .receive(on: DispatchQueue.main)
@@ -92,7 +124,15 @@ final class OBDController {
                 self?.connectionState = state
                 if state.isConnected == false {
                     self?.stopPolling()
+                    self?.lastReadingAt = nil
                 }
+            }
+
+        // Track the BLE peripheral we're paired to, so the UI can show its name.
+        peripheralCancellable = service.$connectedPeripheral
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] peripheral in
+                self?.connectedDeviceName = peripheral?.name
             }
     }
 
@@ -104,9 +144,42 @@ final class OBDController {
         switch connectionState {
         case .disconnected:        return "Adapter not connected"
         case .connecting:          return "Connecting…"
-        case .connectedToAdapter:  return "Adapter found, waiting for car"
+        case .connectedToAdapter:  return "Adapter paired, waiting for car"
         case .connectedToVehicle:  return "Connected"
         case .error:               return "Connection error"
+        }
+    }
+
+    /// True only when we've completed the full handshake AND seen at least one
+    /// PID response. `connectionState.isConnected` returns true even for
+    /// adapter-only, which is misleading for the dashboard.
+    var hasLiveData: Bool {
+        guard let last = lastReadingAt else { return false }
+        return Date().timeIntervalSince(last) < 5
+    }
+
+    /// Run a single PID round-trip as a self-test. Returns the human-readable
+    /// outcome — used by the Settings "Run self-test" button to help users
+    /// figure out where the chain is broken (BLE / ELM327 / vehicle).
+    @MainActor
+    func runSelfTest() async -> String {
+        guard connectionState.isConnected else {
+            return "Not connected. Tap Connect first."
+        }
+        do {
+            let result = try await service.sendCommand(.mode1(.rpm))
+            switch result {
+            case .success(let decoded):
+                if let m = decoded.measurementResult {
+                    return "OK · RPM read back as \(Int(m.value))."
+                } else {
+                    return "OK · adapter responded but the value didn't decode as RPM. Adapter is working, but the car may be using a non-standard protocol."
+                }
+            case .failure(let err):
+                return "Adapter responded but said: \(err)"
+            }
+        } catch {
+            return friendly(error)
         }
     }
 
@@ -119,9 +192,12 @@ final class OBDController {
         defer { isConnecting = false }
 
         do {
-            // The library auto-scans when no peripheral has been chosen yet.
-            // Protocol 6 (CAN 11/500) is the modern default; falls back if not supported.
-            let info = try await service.startConnection(preferedProtocol: nil, timeout: 12)
+            // If the user has picked a specific protocol in Settings, use it.
+            // Otherwise nil = let the adapter auto-detect.
+            let info = try await service.startConnection(
+                preferedProtocol: preferredProtocol,
+                timeout: 12
+            )
             vehicleInfo = info
             startPolling()
         } catch {
@@ -147,7 +223,10 @@ final class OBDController {
     }
 
     /// Start the continuous-update pipeline for the active mode's PID set.
-    /// PIDs the car doesn't support are filtered out so we don't waste BLE round-trips.
+    /// PIDs are filtered against the car's supported set ONLY in wide mode —
+    /// the dashboard set is curated to OBD-II mandatory PIDs, and the library's
+    /// supported-PIDs discovery is sometimes incomplete (filtering against it
+    /// can silently strip everything and produce zero data).
     func startPolling() {
         stopPolling()
 
@@ -163,14 +242,16 @@ final class OBDController {
             interval = 1.5
         }
 
-        // Filter against what the car actually supports. If the library hasn't
-        // populated supportedPIDs yet, ask for everything (optimistic).
-        let pids: [OBDCommand]
-        if let supported = vehicleInfo?.supportedPIDs, !supported.isEmpty {
+        // Wide mode: trim to what the car says it supports, but fall back to
+        // unfiltered if that filter would empty the list.
+        // Dashboard mode: never filter — these are universal PIDs.
+        var pids = candidatePIDs
+        if pollingMode == .wide,
+           let supported = vehicleInfo?.supportedPIDs,
+           !supported.isEmpty {
             let supportedSet = Set(supported)
-            pids = candidatePIDs.filter { supportedSet.contains($0) }
-        } else {
-            pids = candidatePIDs
+            let filtered = candidatePIDs.filter { supportedSet.contains($0) }
+            if !filtered.isEmpty { pids = filtered }
         }
 
         guard !pids.isEmpty else { return }
@@ -185,6 +266,10 @@ final class OBDController {
                 guard let self else { return }
                 for (pid, value) in batch {
                     self.readings[pid] = value
+                }
+                // Mark this batch as "fresh" so the UI knows data is flowing.
+                if !batch.isEmpty {
+                    self.lastReadingAt = Date()
                 }
                 // Recompute fuel metrics with the freshly-merged readings.
                 self.fuel.update(readings: self.readings)

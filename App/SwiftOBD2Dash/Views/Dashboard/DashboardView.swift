@@ -30,6 +30,9 @@ struct DashboardView: View {
     private var portrait: some View {
         ScrollView {
             VStack(spacing: 16) {
+                // Always-visible connection status card.
+                ConnectionStatusCard()
+
                 // Big speed up top.
                 speedHero
 
@@ -45,7 +48,6 @@ struct DashboardView: View {
                 tileGrid
             }
             .padding(16)
-            .padding(.top, 40)   // leave room for the connection banner
         }
     }
 
@@ -58,13 +60,13 @@ struct DashboardView: View {
                 .frame(maxWidth: .infinity)
 
             VStack(spacing: 16) {
+                ConnectionStatusCard()
                 speedHero
                 fuelStrip
                 tileGrid
             }
         }
         .padding(16)
-        .padding(.top, 40)
     }
 
     // MARK: - Pieces

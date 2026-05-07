@@ -8,6 +8,8 @@ import SwiftOBD2
 
 struct SettingsView: View {
     @Environment(OBDController.self) private var obd
+    @State private var selfTestResult: String?
+    @State private var isRunningSelfTest = false
 
     var body: some View {
         NavigationStack {
@@ -15,6 +17,7 @@ struct SettingsView: View {
                 Theme.bg.ignoresSafeArea()
                 Form {
                     connectionSection
+                    diagnosticsSection
                     vehicleSection
                     fuelSection
                     aboutSection
@@ -41,6 +44,19 @@ struct SettingsView: View {
             )) {
                 ForEach(ConnectionType.allCases, id: \.self) { ct in
                     Text(ct.rawValue).tag(ct)
+                }
+            }
+            .listRowBackground(Theme.card)
+
+            // Manual protocol selection. Most modern cars work with CAN 11/500.
+            // Auto-detect is fine on quality adapters but cheap clones often pick wrong.
+            Picker("Protocol", selection: Binding(
+                get: { obd.preferredProtocol },
+                set: { obd.preferredProtocol = $0 }
+            )) {
+                Text("Auto-detect").tag(PROTOCOL?.none)
+                ForEach(PROTOCOL.pickable, id: \.self) { proto in
+                    Text(proto.displayName).tag(PROTOCOL?.some(proto))
                 }
             }
             .listRowBackground(Theme.card)
@@ -93,6 +109,57 @@ struct SettingsView: View {
                 }
             }
         }
+    }
+
+    /// Diagnostics — visible details about the live connection plus a self-test button.
+    /// Helps figure out where the chain is broken when the dashboard isn't getting data.
+    private var diagnosticsSection: some View {
+        Section {
+            LabeledContent("Adapter", value: obd.connectedDeviceName ?? "—")
+                .listRowBackground(Theme.card)
+
+            LabeledContent("Last reading") {
+                Text(lastReadingText)
+                    .foregroundStyle(obd.hasLiveData ? Theme.accent : Theme.textSecondary)
+            }
+            .listRowBackground(Theme.card)
+
+            Button {
+                Task {
+                    isRunningSelfTest = true
+                    selfTestResult = await obd.runSelfTest()
+                    isRunningSelfTest = false
+                }
+            } label: {
+                HStack {
+                    Text("Run self-test")
+                    Spacer()
+                    if isRunningSelfTest { ProgressView() }
+                }
+            }
+            .disabled(isRunningSelfTest || !obd.connectionState.isConnected)
+            .listRowBackground(Theme.card)
+
+            if let result = selfTestResult {
+                Text(result)
+                    .font(.callout)
+                    .foregroundStyle(result.hasPrefix("OK") ? Theme.accent : Theme.warning)
+                    .listRowBackground(Theme.card)
+            }
+        } header: {
+            Text("Diagnostics")
+        } footer: {
+            Text("Self-test sends a single RPM request and reports the raw outcome. Useful when the dashboard shows 'Connected' but no live data is appearing.")
+                .foregroundStyle(Theme.textMuted)
+        }
+    }
+
+    private var lastReadingText: String {
+        guard let last = obd.lastReadingAt else { return "—" }
+        let elapsed = Date().timeIntervalSince(last)
+        if elapsed < 1.5 { return "Live" }
+        if elapsed < 60  { return "\(Int(elapsed)) s ago" }
+        return "\(Int(elapsed/60)) min ago"
     }
 
     /// Fuel computer config — tank size + fuel type. These feed into Range and L/h math.

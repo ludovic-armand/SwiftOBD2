@@ -12,11 +12,13 @@
 		1321FD5F039012BFBE5AF968 /* SensorKnowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F1BEED0A2C73A593F96279 /* SensorKnowledge.swift */; };
 		22E1884CD6461DA1F863FE88 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1612E90C2A7608E8EFF2ED /* TripDetailView.swift */; };
 		40B2FB49C6F9960B6FC61A59 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8E3E5A2AF9E9EBEFF033A5 /* TripsView.swift */; };
+		4DB03DD30DDDA42BD369A1F1 /* ConnectionStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072508246E2AC5E76707A27C /* ConnectionStatusCard.swift */; };
 		6E6A2584537216FB769529F9 /* GaugeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF43BFECBA6165176225D327 /* GaugeTile.swift */; };
 		734EC6EA70A9D715CF442D4E /* SwiftOBD2 in Frameworks */ = {isa = PBXBuildFile; productRef = 07EF1875194BF7B3334FD1D7 /* SwiftOBD2 */; };
 		7DB276AC1B9434B82D0426D6 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964E4988A693FCD796F2CD9A /* Trip.swift */; };
 		8148D2EE04A54D7486DAC684 /* OBDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2438078F1A840C1932FBC0A1 /* OBDController.swift */; };
 		894D59FC66F36F3D8C2072FD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70B7DAA3DC1755F7EBC16D2 /* SettingsView.swift */; };
+		8C31A954AE1467F922EEA2AC /* Protocol+DisplayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA01C87D4A8BE827ED39EA45 /* Protocol+DisplayName.swift */; };
 		9490F88DD81CDAE4FD92AD53 /* RPMArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD02936BB667DC2B778999BC /* RPMArc.swift */; };
 		A7DA983E89BB4C02A3E5D510 /* TripRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09226B3C29F8BA8F7DE615 /* TripRecorder.swift */; };
 		B281E34215FC7E380654048A /* SensorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454947162CE5C6BE5BB1934C /* SensorDetailView.swift */; };
@@ -32,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		072508246E2AC5E76707A27C /* ConnectionStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusCard.swift; sourceTree = "<group>"; };
 		193666D43C0FCBB500D292DB /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		2438078F1A840C1932FBC0A1 /* OBDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBDController.swift; sourceTree = "<group>"; };
 		302301E84D3CCB4EE08C8391 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -47,7 +50,8 @@
 		957C7D178BC1F2F44B46B98F /* DTCRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTCRow.swift; sourceTree = "<group>"; };
 		964E4988A693FCD796F2CD9A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		A48313181B4AC846803E399E /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
-		AD81A2F1AAC23D25FD77AC12 /* SwiftOBD2Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftOBD2Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA01C87D4A8BE827ED39EA45 /* Protocol+DisplayName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocol+DisplayName.swift"; sourceTree = "<group>"; };
+		AD81A2F1AAC23D25FD77AC12 /* SwiftOBD2Dash.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SwiftOBD2Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6038E40168D05DA337B6EE /* FuelComputer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelComputer.swift; sourceTree = "<group>"; };
 		CD02936BB667DC2B778999BC /* RPMArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPMArc.swift; sourceTree = "<group>"; };
 		CE2D68724259AEF5BD626224 /* SwiftOBD2DashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOBD2DashApp.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 				7F1D65F6ABB5D631C2DAE8BC /* DTCKnowledge.swift */,
 				BB6038E40168D05DA337B6EE /* FuelComputer.swift */,
 				2438078F1A840C1932FBC0A1 /* OBDController.swift */,
+				AA01C87D4A8BE827ED39EA45 /* Protocol+DisplayName.swift */,
 				45F1BEED0A2C73A593F96279 /* SensorKnowledge.swift */,
 				CF09226B3C29F8BA8F7DE615 /* TripRecorder.swift */,
 			);
@@ -131,6 +136,14 @@
 				A269B6420A8A3CAC3576ACED /* SwiftOBD2Dash */,
 				51DA35064DC342AE2A795CA7 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		966629AB6B4064459C8C79CF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				072508246E2AC5E76707A27C /* ConnectionStatusCard.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		9FC13E7A7D9C4F01C7066509 /* Diagnostics */ = {
@@ -176,6 +189,7 @@
 		C476D046D4B3815FC7D55811 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				966629AB6B4064459C8C79CF /* Common */,
 				4CB21EB971DD7E8F8EDEB374 /* Dashboard */,
 				9FC13E7A7D9C4F01C7066509 /* Diagnostics */,
 				BE96D20987AB1E913C0148C4 /* Sensors */,
@@ -235,6 +249,7 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					022F53A56BE00BD83BCFC4F7 = {
+						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -277,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB03DD30DDDA42BD369A1F1 /* ConnectionStatusCard.swift in Sources */,
 				D06F50B967A79E02144C3DF6 /* DTCKnowledge.swift in Sources */,
 				F24A04FF849509B4C5671A01 /* DTCRow.swift in Sources */,
 				DE3DC06401054F0A980D4A53 /* DashboardView.swift in Sources */,
@@ -285,6 +301,7 @@
 				E9D3C6DF208F06A5CF3A9FA8 /* FuelTile.swift in Sources */,
 				6E6A2584537216FB769529F9 /* GaugeTile.swift in Sources */,
 				8148D2EE04A54D7486DAC684 /* OBDController.swift in Sources */,
+				8C31A954AE1467F922EEA2AC /* Protocol+DisplayName.swift in Sources */,
 				9490F88DD81CDAE4FD92AD53 /* RPMArc.swift in Sources */,
 				B8EFD942E691D40A6461A040 /* RootTabView.swift in Sources */,
 				B281E34215FC7E380654048A /* SensorDetailView.swift in Sources */,
@@ -309,7 +326,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = T43JWYWX8Y;
 				INFOPLIST_FILE = SwiftOBD2Dash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -328,7 +344,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = T43JWYWX8Y;
 				INFOPLIST_FILE = SwiftOBD2Dash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
